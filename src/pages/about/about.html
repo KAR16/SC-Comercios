@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Comercios
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h2>BIENVENIDO</h2>
+  <ion-card> 
+    <ion-card-header> Mis Comercios </ion-card-header>
+    <ion-list *ngFor="let transaction of transactions"> 
+      <button ion-item>
+        <strong> {{ transaction.amount }} </strong> 
+        {{ transaction.title }}
+      </button>
+    </ion-list>
+  </ion-card>
+  <ion-fab> 
+    <button ion-fab [navPush]="agregarComercio"> + </button>
+  </ion-fab>
+</ion-content>
