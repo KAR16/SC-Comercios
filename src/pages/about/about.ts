@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AgregarComercioPage } from '../agregar-comercio/agregar-comercio';
+import { EditarComercioPage } from '../editar-comercio/editar-comercio';
 import { ComercioService } from '../../services/comercios.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { ComercioService } from '../../services/comercios.service';
 export class AboutPage {
 
   agregarComercio = AgregarComercioPage;
+  //editarComercio = EditarComercioPage;
   Comercios = [];
 
   @ViewChild('myNav') nav: NavController;
@@ -32,6 +34,12 @@ export class AboutPage {
 
   ionViewDidLoad(){
     console.log(this.Comercios);
+  }
+
+  editarComercio(comercio){
+    console.log(comercio);
+    
+    this.navCtrl.push(EditarComercioPage, comercio);
   }
 
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Comercios
+      Añadir Comercios
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,10 +10,10 @@
   <h2>BIENVENIDO</h2>
   <ion-card> 
     <ion-card-header> Mis Comercios </ion-card-header>
-    <ion-list *ngFor="let transaction of transactions"> 
-      <button ion-item>
-        <strong> {{ transaction.amount }} </strong> 
-        {{ transaction.title }}
+    <ion-list *ngFor="let comercio of Comercios"> 
+      <button ion-item (click)="editarComercio(comercio)">
+        <strong> {{ comercio.nombre }} </strong> 
+        {{ comercio.comentario }}
       </button>
     </ion-list>
   </ion-card>

@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar Comercio</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!--<ion-label floating>Mapa</ion-label>
+  <div class="mapa"></div>-->
+
+  <!--<ion-item>
+    <ion-label floating>Coordenadas</ion-label>
+    <ion-input type="text" [(ngModel)]="comercio.titulo" ></ion-input>
+  </ion-item>-->
+
+  <!--<ion-label floating>Imagen</ion-label>
+  <div class="imagen"></div>-->
+
+
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="editComercio.nombre" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Dirección</ion-label>
+    <ion-input type="text" [(ngModel)]="editComercio.direccion" ></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label> Guardar Ubicación </ion-label>
+    <ion-toggle [(ngModel)]="shouldGeolocate" (ionChange)="getLocation()" >  </ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Teléfono</ion-label>
+    <ion-input type="number" [(ngModel)]="editComercio.telefono" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Comentario</ion-label>
+    <ion-textarea [(ngModel)]="editComercio.comentario" name="note" autocomplete="on" autocorrect="on"></ion-textarea>
+  </ion-item>
+  
+  <div class="actions">
+    <button ion-button (click)="editarCommerce()" [disabled]="!shouldSend" > ACTUALIZAR </button>
+  </div>
+
+</ion-content>

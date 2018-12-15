@@ -35,11 +35,11 @@ export class ComercioService{
         this.afDB.database.ref('comercios/' + newComercio.id).set(newComercio);
     }
 
-    public editComercioData(newComercio){
-        console.log(newComercio);
+    public editComercioData(editComercio){
+        console.log(editComercio);
         
         //Instrucción para editar información y mandarla a firebase
-        //this.afDB.database.ref('comercios/' + newComercio.id).set(newComercio);
+        this.afDB.database.ref('comercios/' + editComercio.id).set(editComercio);
     }
 
 }

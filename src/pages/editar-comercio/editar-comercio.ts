@@ -4,40 +4,40 @@ import { GeolocationService } from '../../services/geolocation.service';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ComercioService } from '../../services/comercios.service';
 
-import swal from 'sweetalert';
-
 @IonicPage()
 @Component({
-  selector: 'page-agregar-comercio',
-  templateUrl: 'agregar-comercio.html',
+  selector: 'page-editar-comercio',
+  templateUrl: 'editar-comercio.html',
 })
-export class AgregarComercioPage {
+export class EditarComercioPage {
 
   Comercios = [];
 
-  newComercio = {
-    id: Date.now(),
-    nombre: "",
-    coordenadas: [],
-    telefono: null,
-    comentario: "",
-    direccion:"",
-    image: "assets/imgs/pollo-campero.png"
-  };
+  editComercio;
 
   myPosition: any = {};
-
-  //model;
   shouldGeolocate: boolean = false;
   shouldSend: boolean = true;
 
   constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public params: NavParams, 
     public geolocator: GeolocationService, 
     private geolocation: Geolocation,
     public comercioService: ComercioService) {
 
-      //this.Comercios = comercioService.getComercio();
+      this.editComercio = params.data;
+
+      if (this.editComercio.coordenadas[0]) {
+        this.shouldGeolocate = true;
+      }
+
+      console.log(params.data);
+      console.log(params.data.item);
+      
+      
+      console.log(this.editComercio);
+      
+
       comercioService.getComercio().subscribe(comercios => {
         console.log(comercios);
         
@@ -49,13 +49,11 @@ export class AgregarComercioPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgregarComercioPage');
-    console.log(this.Comercios);
-    
+    console.log('ionViewDidLoad EditarComercioPage');
+
   }
 
   getLocation(){
-
     console.log("Hola");
 
     if (this.shouldGeolocate) {
@@ -66,7 +64,7 @@ export class AgregarComercioPage {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       }
-      this.newComercio.coordenadas.push(this.myPosition);
+      this.editComercio.coordenadas.push(this.myPosition);
       console.log(this.myPosition);
     })
     .catch(error=>{
@@ -75,13 +73,13 @@ export class AgregarComercioPage {
     
     }else{
       this.myPosition = {};
+      this.editComercio.coordenadas = [];
     }
-   
   }
 
-  addCommerce(){
+  editarCommerce(){
     
-    if (this.newComercio.nombre == "" || this.newComercio.telefono == null || this.newComercio.direccion == "" || this.newComercio.comentario == "") {
+    if (this.editComercio.nombre == "" || this.editComercio.telefono == null || this.editComercio.direccion == "" || this.editComercio.comentario == "") {
       swal("¡Atención!", "Complete los campos.", "warning");
     }else{
 
@@ -91,17 +89,17 @@ export class AgregarComercioPage {
         for (let index = 0; index < this.Comercios.length; index++) {
           console.log(this.Comercios[index].nombre);
 
-          if (this.newComercio.nombre == this.Comercios[index].nombre) {
+          if ((this.editComercio.nombre == this.Comercios[index].nombre) && (this.editComercio.id != this.Comercios[index].id)) {
             swal("¡Error!", "Nombre de comercio ya existente.", "error");
             break;
           }else if (index == this.Comercios.length - 1){
 
-            this.newComercio.telefono = parseInt(this.newComercio.telefono);
-            this.comercioService.createComercio(this.newComercio);
+            this.editComercio.telefono = parseInt(this.editComercio.telefono);
+            this.comercioService.editComercioData(this.editComercio);
             
-            swal("¡Excelente!", "Comercio agregado éxitosamente.", "success");
+            swal("¡Excelente!", "Comercio Actualizado.", "success");
             
-            this.newComercio = {
+            /*this.editComercio = {
               id: Date.now(),
               nombre: "",
               coordenadas: [],
@@ -111,19 +109,19 @@ export class AgregarComercioPage {
               image: "assets/imgs/pollo-campero.png"
             };
             this.shouldGeolocate = false;
-            console.log(this.Comercios);
+            console.log(this.Comercios);*/
             break;
           }
           
         }
         
       }else{
-        this.newComercio.telefono = parseInt(this.newComercio.telefono);
-        this.comercioService.createComercio(this.newComercio);
+        this.editComercio.telefono = parseInt(this.editComercio.telefono);
+        this.comercioService.createComercio(this.editComercio);
             
-        swal("¡Excelente!", "Comercio agregado éxitosamente.", "success");
+        swal("¡Excelente!", "Comercio Actualizado.", "success");
         
-        this.newComercio = {
+        /*this.editComercio = {
           id: Date.now(),
           nombre: "",
           coordenadas: [],
@@ -133,7 +131,7 @@ export class AgregarComercioPage {
           image: "assets/imgs/pollo-campero.png"
         };
         this.shouldGeolocate = false;
-        console.log(this.Comercios);
+        console.log(this.Comercios);*/
       }
 
     }

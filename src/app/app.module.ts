@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AgregarComercioPage } from '../pages/agregar-comercio/agregar-comercio';
+import { EditarComercioPage } from '../pages/editar-comercio/editar-comercio';
 
 import { GeolocationService } from '../services/geolocation.service';
 import { ComercioService } from '../services/comercios.service';
@@ -40,6 +41,7 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     AgregarComercioPage,
+    EditarComercioPage,
     TabsPage
   ],
   imports: [
@@ -56,6 +58,7 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     AgregarComercioPage,
+    EditarComercioPage,
     TabsPage
   ],
   providers: [
