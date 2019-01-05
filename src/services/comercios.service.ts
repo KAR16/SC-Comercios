@@ -11,7 +11,7 @@ export class ComercioService{
 
     /*comercios = [
         {id: 1, nombre: "Mc Donalds", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 45858996, comentario:"Primer Comentario", direccion: "16av. 2-41, z1"},
-        {id: 2, nombre: "Pollo Campero", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 78962545, comentario:"Segundo Comentario", direccion: "14av. 2-41, z5"}, 
+        {id: 2, nombre: "Pollo Campero", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 78962545, comentario:"Segundo Comentario", direccion: "14av. 2-41, z5"},
         {id: 3, nombre: "Bar Las Delicias", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 54203689, comentario:"Tercer Comentario", direccion: "12av. 2-41, z10"},
         {id: 4, nombre: "Mc Donalds", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 86954520, comentario:"Cuarto Comentario", direccion: "19av. 2-41, z8"},
         {id: 5, nombre: "Mc Donalds", coordenadas:[{longitud: 0, latitud: 0}] , telefono: 41528974, comentario:"Quinto Comentario", direccion: "20av. 2-41, z7"},
@@ -20,7 +20,7 @@ export class ComercioService{
     public getComercio(){
         //Envío Datos Locales
         //return this.comercios;
-        
+
         // Envío datos desde Firebase
         return this.afDB.list('comercios/').valueChanges();
     }
@@ -37,9 +37,17 @@ export class ComercioService{
 
     public editComercioData(editComercio){
         console.log(editComercio);
-        
+
         //Instrucción para editar información y mandarla a firebase
         this.afDB.database.ref('comercios/' + editComercio.id).set(editComercio);
+    }
+
+    public getUsers(){
+        //Envío Datos Locales
+        //return this.comercios;
+
+        // Envío datos desde Firebase
+        return this.afDB.list('usuarios/').valueChanges();
     }
 
 }

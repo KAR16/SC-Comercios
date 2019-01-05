@@ -29,11 +29,11 @@
     <ion-label floating>Dirección</ion-label>
     <ion-input type="text" [(ngModel)]="newComercio.direccion" ></ion-input>
   </ion-item>
-  
-  <ion-item>
+
+  <!-- <ion-item>
     <ion-label> Guardar Ubicación </ion-label>
     <ion-toggle [(ngModel)]="shouldGeolocate" (ionChange)="getLocation()" >  </ion-toggle>
-  </ion-item>
+  </ion-item> -->
 
   <ion-item>
     <ion-label floating>Teléfono</ion-label>
@@ -44,7 +44,7 @@
     <ion-label floating>Comentario</ion-label>
     <ion-textarea [(ngModel)]="newComercio.comentario" name="note" autocomplete="on" autocorrect="on"></ion-textarea>
   </ion-item>
-  
+
   <div class="actions">
     <button ion-button (click)="addCommerce()" [disabled]="!shouldSend" > CREAR </button>
   </div>

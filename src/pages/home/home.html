@@ -29,6 +29,14 @@
         </button>
       </ion-col>
       <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start (click)="goToComerce(comercio.coordenadas[0])">
+          <ion-icon name='pin'></ion-icon>
+          Ir a Comercio
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col text-center>
         <button ion-button clear small color="danger" icon-start>
           <ion-icon name='home'></ion-icon>
           {{comercio.direccion}}

@@ -5,6 +5,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ComercioService } from '../../services/comercios.service';
 import { Platform } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, LatLng, GoogleMapsEvent, CameraPosition, MarkerOptions } from '@ionic-native/google-maps';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 //declare var google;
 
 @Component({
@@ -60,7 +61,11 @@ export class HomePage {
 
   @ViewChild('myNav') nav: NavController;
   constructor(
-    private navCtrl: NavController, private geolocation: Geolocation, private googleMaps: GoogleMaps, public comercioService: ComercioService){
+    private navCtrl: NavController, 
+    private geolocation: Geolocation, 
+    private googleMaps: GoogleMaps, 
+    public comercioService: ComercioService,
+    private launchNavigator: LaunchNavigator){
 
       //Guardo los datos locales
       //this.comercios = comercioService.getComercio();
@@ -251,5 +256,14 @@ addMarker() {
     });
   });
 }*/
+
+goToComerce(location){
+  if (location != "vacio") {
+    var coords = location.latitude.toString() + "," + location.longitude.toString();
+    console.log(coords);
+    this.launchNavigator.navigate(coords);
+  }
+  
+}
 
 }

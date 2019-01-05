@@ -3,12 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+//Vistas
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AgregarComercioPage } from '../pages/agregar-comercio/agregar-comercio';
 import { EditarComercioPage } from '../pages/editar-comercio/editar-comercio';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { UserPage} from '../pages/user/user';
 
 import { GeolocationService } from '../services/geolocation.service';
 import { ComercioService } from '../services/comercios.service';
@@ -20,19 +24,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environment/environment';
+
+//Servicios
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 //Google Maps Import
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDlOEehpFHLWwCKUu-5eayKBbsTq2TcR_M",
-  authDomain: "sc-comercios.firebaseapp.com",
-  databaseURL: "https://sc-comercios.firebaseio.com",
-  projectId: "sc-comercios",
-  storageBucket: "sc-comercios.appspot.com",
-  messagingSenderId: "773451270021"
-};
+//Social Providers
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
+import { TwitterConnect } from '@ionic-native/twitter-connect';
+
+//Launch Navigator
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 @NgModule({
   declarations: [
@@ -42,11 +50,14 @@ export const firebaseConfig = {
     HomePage,
     AgregarComercioPage,
     EditarComercioPage,
+    LoginPage,
+    RegisterPage,
+    UserPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     IonicModule.forRoot(MyApp)
@@ -59,6 +70,9 @@ export const firebaseConfig = {
     HomePage,
     AgregarComercioPage,
     EditarComercioPage,
+    LoginPage,
+    RegisterPage,
+    UserPage,
     TabsPage
   ],
   providers: [
@@ -69,6 +83,12 @@ export const firebaseConfig = {
     GeolocationService,
     ComercioService,
     AngularFireDatabase,
+    AuthService,
+    UserService,
+    Facebook,
+    GooglePlus,
+    TwitterConnect,
+    LaunchNavigator,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

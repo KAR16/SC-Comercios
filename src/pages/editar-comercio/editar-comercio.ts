@@ -27,30 +27,29 @@ export class EditarComercioPage {
 
       this.editComercio = params.data;
 
-      if (this.editComercio.coordenadas[0]) {
+      if (this.editComercio.coordenadas[0] != "vacio") {
         this.shouldGeolocate = true;
+      }else{
+        this.shouldGeolocate = false;
       }
-
-      console.log(params.data);
-      console.log(params.data.item);
-      
-      
-      console.log(this.editComercio);
       
 
-      comercioService.getComercio().subscribe(comercios => {
-        console.log(comercios);
-        
-        this.Comercios = comercios;
-        //this.users.push(usuarios);
-        //console.log(this.users);
-        
-      });
+      
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditarComercioPage');
+    this.comercioService.getComercio().subscribe(comercios => {
+      this.Comercios = [];
+      console.log(comercios);
+      
+      this.Comercios = comercios;
+      //this.users.push(usuarios);
+      //console.log(this.users);
+      
+    });
 
+    console.log(this.editComercio);
   }
 
   getLocation(){
@@ -64,7 +63,7 @@ export class EditarComercioPage {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       }
-      this.editComercio.coordenadas.push(this.myPosition);
+      this.editComercio.coordenadas[0] = this.myPosition;
       console.log(this.myPosition);
     })
     .catch(error=>{
@@ -73,7 +72,7 @@ export class EditarComercioPage {
     
     }else{
       this.myPosition = {};
-      this.editComercio.coordenadas = [];
+      this.editComercio.coordenadas[0] = "vacio";
     }
   }
 
