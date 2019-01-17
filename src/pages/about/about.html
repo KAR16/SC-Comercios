@@ -10,11 +10,22 @@
   <h2 style="text-align:center;">BIENVENIDO</h2>
   <ion-card> 
     <ion-card-header> Mis Comercios </ion-card-header>
-    <ion-list *ngFor="let comercio of comerciosByUser"> 
-      <button ion-item (click)="editarComercio(comercio)">
-        <strong> {{ comercio.nombre }} </strong> 
-        {{ comercio.comentario }}
-      </button>
+    <ion-list *ngFor="let comercio of comerciosByUser">
+      <ion-row>
+        <ion-col>
+          <button ion-item clear small icon-start>
+            <strong> {{ comercio.nombre }} </strong> 
+          </button>
+        </ion-col>
+        <ion-col style="left:15%;">
+          <button ion-button color="primary" clear small icon-start (click)="editarComercio(comercio)">
+            <ion-icon name='create'></ion-icon>
+          </button>
+          <button ion-button color="primary" clear small icon-start (click)="eliminarComercio(comercio)">
+            <ion-icon name='md-trash'></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
     </ion-list>
   </ion-card>
   <ion-fab> 

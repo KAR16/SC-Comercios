@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { AgregarComercioPage } from '../agregar-comercio/agregar-comercio'
 import { Geolocation } from '@ionic-native/geolocation';
 import { ComercioService } from '../../services/comercios.service';
+import { DetalleComercioPage } from '../detalle-comercio/detalle-comercio';
 import { Platform } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, LatLng, GoogleMapsEvent, CameraPosition, MarkerOptions } from '@ionic-native/google-maps';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
@@ -63,8 +64,9 @@ export class HomePage {
   constructor(
     private navCtrl: NavController, 
     private geolocation: Geolocation, 
-    private googleMaps: GoogleMaps, 
+    private googleMaps: GoogleMaps,
     public comercioService: ComercioService,
+    public appCtrl: App,
     private launchNavigator: LaunchNavigator){
 
       //Guardo los datos locales
@@ -263,7 +265,12 @@ goToComerce(location){
     console.log(coords);
     this.launchNavigator.navigate(coords);
   }
-  
+}
+
+goToDetailComerce(comercio){
+  console.log(comercio);
+  //this.navCtrl.push(DetalleComercioPage, comercio);
+  this.appCtrl.getRootNav().push(DetalleComercioPage, comercio);
 }
 
 }

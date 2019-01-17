@@ -29,12 +29,11 @@
     <br>
 
   </form>-->
-  <label class="error-message">{{errorMessage}}</label>
-  <!-- <h3 style="text-align:center;margin-top:30px;">Acceder con:</h3> -->
   <h3 style="text-align:center;margin-top:30px;">Iniciar Sesión</h3>
   <button ion-button full type="submit" class="facebook-button" (click)="tryFacebookLogin()">Facebook</button>
-  <!--<button ion-button full type="submit" class="twitter-button" (click)="tryTwitterLogin()">Twitter Login</button>-->
   <button ion-button full type="submit" class="google-button"  (click)="tryGoogleLogin()">Google</button>
+  <!-- <button ion-button full type="submit" class="twitter-button" (click)="loginUser()">Acceder</button> -->
 
-  <button ion-button full type="submit" (click)="loginUser()">Acceder</button>
+  <!-- Muestra de Error -->
+  <label class="error-message">{{errorMessage}}</label>
 </ion-content>

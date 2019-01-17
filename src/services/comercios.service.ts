@@ -42,12 +42,25 @@ export class ComercioService{
         this.afDB.database.ref('comercios/' + editComercio.id).set(editComercio);
     }
 
+    public deleteComercio(comercio){
+        //Instrucción para editar información y mandarla a firebase
+        this.afDB.database.ref('comercios/' + comercio.id).remove();
+    }
+
     public getUsers(){
         //Envío Datos Locales
         //return this.comercios;
 
         // Envío datos desde Firebase
         return this.afDB.list('usuarios/').valueChanges();
+    }
+
+    public getUserById(userId){
+        //Envío Datos Locales
+        //return this.comercios;
+
+        // Envío datos desde Firebase
+        return this.afDB.database.ref('usuarios/' + userId);
     }
 
 }

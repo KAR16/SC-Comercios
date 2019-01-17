@@ -30,17 +30,18 @@ export class UserPage{
   ionViewWillLoad(){
     console.log("Entre a pagina usuario...");
 
-    // this.comercioService.getUsers().subscribe(usuarios => {
-    //   console.log(usuarios);
-    //   this.usuarios = usuarios;
-    //   for (let index = 0; index < this.usuarios.length; index++) {
-    //     console.log(this.usuarios[index]);
-    //
-    //     if (this.usuarios[index].uid == 12458963547896252) {
-    //       this.usuarioByID = this.usuarios[index];
-    //     }
-    //   }
-    // });
+    //Usuario Eval
+    /*this.comercioService.getUsers().subscribe(usuarios => {
+      console.log(usuarios);
+      this.usuarios = usuarios;
+      for (let index = 0; index < this.usuarios.length; index++) {
+        console.log(this.usuarios[index]);
+
+        if (this.usuarios[index].uid == 12458963547896252) {
+          this.usuarioByID = this.usuarios[index];
+        }
+      }
+    });*/
 
 
     this.userService.getCurrentUser()
@@ -55,6 +56,8 @@ export class UserPage{
 
 
   logout(provider){
+    console.log("Cerrando redes...");
+
     this.authService.doLogout(provider)
     .then((res) => {
       console.log(res);
@@ -66,6 +69,8 @@ export class UserPage{
   }
 
   cerrarSesion(){
+    console.log("Cerrando...");
+
     this.appCtrl.getRootNav().push(LoginPage);
   }
 }

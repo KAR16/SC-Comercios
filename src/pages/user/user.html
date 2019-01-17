@@ -14,7 +14,8 @@
         This is an example app of authentication using Firebase in an Ionic 3 app.
       </p>
     </ion-card-content>
-    <button ion-button block type="button" (click)='logout(user.provider)'>Logout</button>
+    <button class="redes" *ngIf="user" ion-button block type="button" (click)='logout(user.provider)'>Logout</button>
+    <!-- <button class="user" *ngIf="!user" ion-button block type="button" (click)='cerrarSesion()'>Logout</button> -->
   </ion-card>
   <!-- <ion-card>
     <img [src]="usuarioByID.photoURL"/>

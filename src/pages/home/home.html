@@ -12,12 +12,12 @@
 
     <img src="{{comercio.image}}"/>
 
-    <ion-card-content>
+    <ion-card-content (click)="goToDetailComerce(comercio)">
       <ion-card-title>
         {{comercio.nombre}}
       </ion-card-title>
       <p>
-        {{comercio.comentario}}
+        {{comercio.descripcion}}
       </p>
     </ion-card-content>
 

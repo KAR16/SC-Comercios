@@ -22,10 +22,11 @@ export class AgregarComercioPage {
     nombre: "",
     coordenadas: ["vacio"],
     telefono: null,
-    comentario: "",
+    descripcion: "",
     direccion:"",
     image: "assets/imgs/pollo-campero.png",
-    idUsuario: ""
+    idUsuario: "",
+    comentarios:["vacio"]
   };
 
   myPosition: any = {};
@@ -57,13 +58,18 @@ export class AgregarComercioPage {
     console.log('ionViewDidLoad AgregarComercioPage');
     console.log(this.Comercios);
 
-    this.userService.getCurrentUser()
+    //Método Usuarios Current Users
+    /*this.userService.getCurrentUser()
     .then(user => {
       this.user = user;
       this.newComercio.idUsuario = this.user.id;
       console.log(this.user);
 
-    }, err => console.log(err))
+    }, err => console.log(err))*/
+
+
+    //Método Usuario Eval
+    //this.newComercio.idUsuario = "12458963547896252";
 
     console.log("Hola");
 
@@ -117,7 +123,7 @@ export class AgregarComercioPage {
 
   addCommerce(){
 
-    if (this.newComercio.nombre == "" || this.newComercio.telefono == null || this.newComercio.direccion == "" || this.newComercio.comentario == "") {
+    if (this.newComercio.nombre == "" || this.newComercio.telefono == null || this.newComercio.direccion == "" || this.newComercio.descripcion == "") {
       swal("¡Atención!", "Complete los campos.", "warning");
     }else{
 
@@ -142,10 +148,11 @@ export class AgregarComercioPage {
               nombre: "",
               coordenadas: ["vacio"],
               telefono: null,
-              comentario: "",
+              descripcion: "",
               direccion:"",
               image: "assets/imgs/pollo-campero.png",
-              idUsuario: ""
+              idUsuario: "",
+              comentarios: ["vacio"]
             };
             this.shouldGeolocate = false;
             console.log(this.Comercios);
@@ -165,10 +172,11 @@ export class AgregarComercioPage {
           nombre: "",
           coordenadas: ["vacio"],
           telefono: null,
-          comentario: "",
+          descripcion: "",
           direccion:"",
           image: "assets/imgs/pollo-campero.png",
-          idUsuario: ""
+          idUsuario: "",
+          comentarios:["vacio"]
         };
         this.shouldGeolocate = false;
         console.log(this.Comercios);

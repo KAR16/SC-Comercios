@@ -9,6 +9,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AgregarComercioPage } from '../pages/agregar-comercio/agregar-comercio';
+import { DetalleComercioPage } from '../pages/detalle-comercio/detalle-comercio';
 import { EditarComercioPage } from '../pages/editar-comercio/editar-comercio';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -53,6 +54,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     LoginPage,
     RegisterPage,
     UserPage,
+    DetalleComercioPage,
     TabsPage
   ],
   imports: [
@@ -73,6 +75,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     LoginPage,
     RegisterPage,
     UserPage,
+    DetalleComercioPage,
     TabsPage
   ],
   providers: [
